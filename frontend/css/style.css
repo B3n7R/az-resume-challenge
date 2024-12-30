@@ -1,0 +1,81 @@
+* {
+    box-sizing: border-box;
+    font-family: Verdana, sans-serif;
+}
+
+/* Create two unequal columns that floats next to each other */
+.column {
+    float: left;
+    padding: 10px;
+}
+
+div.row .left {
+    width: 65%;
+}
+
+div.row .right {
+    width: 35%;
+}
+
+/* Clear floats after the columns */
+.row:after {
+    content: "";
+    display: table;
+    clear: both;
+}
+
+.lightgreen {
+    color: lightseagreen;
+    font-weight: bold;
+}
+
+.bold {
+    font-weight: bold;
+}
+
+.letter {
+    list-style-type: none;
+    position: relative;    /* For custom bullet alignment */
+}
+
+.letter::before {
+    content: "\2709"; /* Unicode for heart symbol */
+    color: lightseagreen;       /* Optional: Set color for the symbol */
+    font-weight: bold;
+    margin-right: 10px;
+  }
+
+.mail {
+    list-style-type: none;
+}
+
+.mail::before {
+    content: "\0040"; /* Unicode for heart symbol */
+    color: lightseagreen;       /* Optional: Set color for the symbol */
+    font-weight: bold;
+    margin-right: 10px;
+}
+
+.phone {
+    list-style-type: none;
+}
+
+.phone::before {
+    content: "\260E"; /* Unicode for heart symbol */
+    color: lightseagreen;       /* Optional: Set color for the symbol */
+    font-weight: bold;
+    margin-right: 10px;
+}
+
+.cake {
+    list-style-type: none;
+}
+
+.cake::before {
+    content: "\1F5D3"; /* Unicode for heart symbol */
+    color: lightseagreen;       /* Optional: Set color for the symbol */
+    font-weight: bold;
+    margin-right: 10px;
+    font-family: "Segoe UI Symbol", "Arial", sans-serif; /* Force symbol font */
+}
+
