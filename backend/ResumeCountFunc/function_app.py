@@ -1,6 +1,6 @@
 import azure.functions as func
 import logging
-import json  # Import the JSON module
+import json
 
 app = func.FunctionApp(http_auth_level=func.AuthLevel.ANONYMOUS)
 
@@ -12,7 +12,14 @@ app = func.FunctionApp(http_auth_level=func.AuthLevel.ANONYMOUS)
     connection="AzureResumeConnectionString",
     sql_query="SELECT * FROM c WHERE c.id = '1'",
 )
-def get_counter(req: func.HttpRequest, inputDocument: func.DocumentList) -> func.HttpResponse:
+@app.cosmos_db_output(
+    arg_name="outputDocument",
+    database_name="AzureResume",
+    container_name="Counter",
+    connection="AzureResumeConnectionString",
+    create_if_not_exists=False
+)
+def update_and_get_counter(req: func.HttpRequest, inputDocument: func.DocumentList, outputDocument: func.Out[func.Document]) -> func.HttpResponse:
     logging.info('Python HTTP trigger function processed a request.')
 
     # Check if the document exists
@@ -36,13 +43,20 @@ def get_counter(req: func.HttpRequest, inputDocument: func.DocumentList) -> func
             mimetype="application/json"
         )
 
-    # Return the counter value as JSON
+    # Increment the counter
+    counter_value += 1
+    document["counter"] = counter_value
+
+    # Use the output binding to update the document in Cosmos DB
+    outputDocument.set(func.Document.from_dict(document))
+
+    # Return the updated counter value as JSON
     response_body = {
         "id": document["id"],
         "counter": counter_value
     }
     return func.HttpResponse(
-        json.dumps(response_body),  # Convert dictionary to JSON string
+        json.dumps(response_body),
         status_code=200,
         mimetype="application/json"
     )
