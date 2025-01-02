@@ -1,9 +1,0 @@
-{
-  "IsEncrypted": false,
-  "Values": {
-    "AzureWebJobsStorage": "",
-    "FUNCTIONS_WORKER_RUNTIME": "python",
-    "AzureWebJobsFeatureFlags": "EnableWorkerIndexing",
-    "AzureResumeConnectionString": "AccountEndpoint=https://azureresume-cosmos-db.documents.azure.com:443/;AccountKey=FnLGVQL3tTfEWS9H1Nh506uc8ddtEFY4A16ivK4zzTUjoSvKdaInlGtzmFHBwSTmFltjtsqnvRbJACDbtCrHiA==;"
-  }
-}
