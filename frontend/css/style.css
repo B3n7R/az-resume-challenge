@@ -3,27 +3,6 @@
     font-family: Verdana, sans-serif;
 }
 
-/* Create two unequal columns that floats next to each other */
-.column {
-    float: left;
-    padding: 10px;
-}
-
-div.row .left {
-    width: 65%;
-}
-
-div.row .right {
-    width: 35%;
-}
-
-/* Clear floats after the columns */
-.row:after {
-    content: "";
-    display: table;
-    clear: both;
-}
-
 .lightgreen {
     color: lightseagreen;
     font-weight: bold;
@@ -33,111 +12,65 @@ div.row .right {
     font-weight: bold;
 }
 
-.letter {
-    list-style-type: none;
-    position: relative;    /* For custom bullet alignment */
+body {
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
+    margin: 0;
+    padding: 0;
 }
 
-.letter::before {
-    content: "\2709"; /* Unicode for heart symbol */
-    color: lightseagreen;       /* Optional: Set color for the symbol */
-    font-weight: bold;
-    margin-right: 10px;
-  }
-
-.mail {
-    list-style-type: none;
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
 }
 
-.mail::before {
-    content: "\0040"; /* Unicode for heart symbol */
-    color: lightseagreen;       /* Optional: Set color for the symbol */
-    font-weight: bold;
-    margin-right: 10px;
+.welcome {
+    text-align: center;
+    margin-bottom: 40px;
+    padding: 20px;
+    background-color: #f5f5f5;
+    border-radius: 8px;
 }
 
-.phone {
-    list-style-type: none;
+.columns {
+    display: flex;
+    gap: 20px;
 }
 
-.phone::before {
-    content: "\260E"; /* Unicode for heart symbol */
-    color: lightseagreen;       /* Optional: Set color for the symbol */
-    font-weight: bold;
-    margin-right: 10px;
+.left-column {
+    flex: 2;
 }
 
-.cake {
-    list-style-type: none;
+.right-column {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
-.cake::before {
-    content: "\1F5D3"; /* Unicode for heart symbol */
-    color: lightseagreen;       /* Optional: Set color for the symbol */
-    font-weight: bold;
-    margin-right: 10px;
-    font-family: "Segoe UI Symbol", "Arial", sans-serif; /* Force symbol font */
+.section {
+    margin-bottom: 30px;
 }
 
-    body {
-        font-family: Arial, sans-serif;
-        line-height: 1.6;
-        margin: 0;
-        padding: 0;
-    }
+.section h2 {
+    margin-bottom: 10px;
+    font-size: 24px;
+}
 
-    .container {
-        max-width: 1200px;
-        margin: 0 auto;
-        padding: 20px;
-    }
+.profile-image {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-bottom: 10px;
+}
 
-    .welcome {
-        text-align: center;
-        margin-bottom: 40px;
-        padding: 20px;
-        background-color: #f5f5f5;
-        border-radius: 8px;
-    }
+.about-me {
+    text-align: center;
+    margin-bottom: 20px;
+}
 
-    .columns {
-        display: flex;
-        gap: 20px;
-    }
-
-    .left-column {
-        flex: 2;
-    }
-
-    .right-column {
-        flex: 1;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-    }
-
-    .section {
-        margin-bottom: 30px;
-    }
-
-    .section h2 {
-        margin-bottom: 10px;
-        font-size: 24px;
-    }
-
-    .profile-image {
-        width: 150px;
-        height: 150px;
-        border-radius: 50%;
-        object-fit: cover;
-        margin-bottom: 10px;
-    }
-
-    .about-me {
-        text-align: center;
-        margin-bottom: 20px;
-    }
-
-    .certifications {
-        text-align: center;
-    }
+.certifications {
+    text-align: center;
+}
