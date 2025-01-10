@@ -1,59 +1,15 @@
 name: deploy_frontend
-# Deploys when push is made from the frontend folder
 
+# Add a manual trigger
 on:
+  workflow_dispatch: # Allows manual triggering via GitHub Actions UI
   push:
     branches: [ main ]
     paths: 
     - 'frontend/**'
 
-  # Allow manual trigger
-  workflow_dispatch:
-
 jobs:
-  approve:
-    runs-on: ubuntu-latest
-    steps:
-    - name: Request approval
-      uses: actions/github-script@v6
-      with:
-        script: |
-          const { issue, repo } = context;
-          const result = await github.issues.create({
-            ...repo,
-            title: "Approval Required: Deploy Frontend",
-            body: "Click Approve below to deploy the frontend to Azure.",
-            labels: ["deploy-approval"]
-          });
-          core.setOutput("issue_number", result.data.number);
-    outputs:
-      issue_number: ${{ steps.approve.outputs.issue_number }}
-
-  wait_for_approval:
-    needs: approve
-    runs-on: ubuntu-latest
-    steps:
-    - name: Wait for approval
-      uses: actions/github-script@v6
-      with:
-        script: |
-          const { repo } = context;
-          const issueNumber = "${{ needs.approve.outputs.issue_number }}";
-          let approved = false;
-          while (!approved) {
-            const { data } = await github.issues.listComments({
-              ...repo,
-              issue_number: issueNumber,
-            });
-            approved = data.some((comment) => comment.body.includes("Approved"));
-            if (!approved) {
-              console.log("Awaiting approval...");
-              await new Promise((resolve) => setTimeout(resolve, 60000)); // Wait 1 minute
-            }
-          }
-
   build:
-    needs: wait_for_approval
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v3
