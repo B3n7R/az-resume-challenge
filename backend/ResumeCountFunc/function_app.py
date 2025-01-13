@@ -4,6 +4,7 @@ import json
 
 app = func.FunctionApp(http_auth_level=func.AuthLevel.ANONYMOUS)
 
+@app.function_name(name="update_and_get_counter")
 @app.route(route="ResumeCountFunc")
 @app.cosmos_db_input(
     arg_name="inputDocument",
@@ -19,7 +20,7 @@ app = func.FunctionApp(http_auth_level=func.AuthLevel.ANONYMOUS)
     connection="AzureResumeConnectionString",
     create_if_not_exists=False
 )
-def update_and_get_counter(req: func.HttpRequest, inputDocument: func.DocumentList, outputDocument: func.Out[func.Document]) -> func.HttpResponse:
+def main(req: func.HttpRequest, inputDocument: func.DocumentList, outputDocument: func.Out[func.Document]) -> func.HttpResponse:
     logging.info('Python HTTP trigger function processed a request.')
 
     # Check if the document exists
