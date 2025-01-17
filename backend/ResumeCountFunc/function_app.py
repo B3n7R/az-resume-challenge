@@ -36,6 +36,7 @@ def main(req: func.HttpRequest, inputDocument: func.DocumentList, outputDocument
     document = inputDocument[0]  # Since we're querying by ID, we expect a single result
     counter_value = document.get("counter", None)
 
+    # Error handling if no counter value could be retrieved
     if counter_value is None:
         logging.error("Field 'counter' not found in the item.")
         return func.HttpResponse(
