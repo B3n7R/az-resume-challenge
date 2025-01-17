@@ -45,7 +45,7 @@ def main(req: func.HttpRequest, inputDocument: func.DocumentList, outputDocument
             mimetype="application/json"
         )
 
-    # Increment the counter by 1
+    # Increment the counter by
     counter_value += 1
     document["counter"] = counter_value
 
