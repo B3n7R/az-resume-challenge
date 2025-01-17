@@ -37,6 +37,10 @@ jobs:
         pip install -r requirements.txt --target=".python_packages/lib/site-packages"
         popd
 
+    - name: 'Check pytest Installation'
+      run: |
+        python -m pip show pytest
+
     - name: 'Run Unit Tests'
       shell: bash
       run: |
