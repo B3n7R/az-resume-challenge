@@ -34,12 +34,8 @@ jobs:
       run: |
         pushd './${{ env.AZURE_FUNCTIONAPP_PACKAGE_PATH }}/ResumeCountFunc'
         python -m pip install --upgrade pip
-        pip install -r requirements.txt --target=".python_packages/lib/site-packages"
+        pip install -r requirements.txt
         popd
-
-    - name: 'Check pytest Installation'
-      run: |
-        python -m pip show pytest
 
     - name: 'Run Unit Tests'
       shell: bash
